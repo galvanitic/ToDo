@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo, { ReactComponent } from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  state = {
+    isClicked: false
+  }
+  toggle = () => {
+    this.setState({isClicked: !this.state.isClicked})
+    console.log(`THE STATE IS ${this.state.isClicked}`);
+  }
+
+
+  render() {
+    return(
+      <button onClick={this.toggle}>
+        Was button clicked? {this.props.onClicked}
+      </button>
+    )
+  }
+
 }
 
 export default App;
